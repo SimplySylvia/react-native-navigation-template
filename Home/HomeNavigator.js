@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
 
 import BusinessNavigator from "../Business/BusinessNavigator";
+import BusinessHeader from "../Business/BusinessHeader";
 
 const HomeStack = createStackNavigator();
 
@@ -14,7 +15,11 @@ function HomeNavigator() {
       <HomeStack.Screen
         name='Business'
         component={BusinessNavigator}
-        options={({ route }) => ({ title: route.params.id })}
+        options={({ route }) => ({
+          headerTitle: props => (
+            <BusinessHeader {...props} business={route.params} />
+          ),
+        })}
       />
     </HomeStack.Navigator>
   );
