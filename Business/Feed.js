@@ -1,12 +1,12 @@
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-function About({ route, navigation }) {
+function Feed({ route, navigation }) {
   return (
     <View>
-      <Text>About</Text>
+      <Text>Feed</Text>
     </View>
   );
 }
 
-export default About;
+export default Feed;

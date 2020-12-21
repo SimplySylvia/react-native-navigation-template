@@ -1,60 +1,26 @@
 import * as React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
 import { View, Text, StyleSheet } from "react-native";
 
 import About from "./About";
+import Products from "./Products";
+import Feed from "./Feed";
 
-const BusinessStack = createStackNavigator();
-
-function BusinessHeader(props) {
-  console.log(props);
-  const styles = StyleSheet.create({
-    header: {
-      flex: 1,
-      flexDirection: "row",
-      padding: 0,
-    },
-    headerItem: {
-      backgroundColor: "#fff",
-      flex: 1,
-      textAlign: "center",
-      height: "100%",
-    },
-  });
-
-  function isActive(name) {
-    return name === props.active
-      ? { backgroundColor: "#1f1f1f", color: "#fff" }
-      : {};
-  }
-
-  return (
-    <View style={styles.header}>
-      <Text style={{ ...styles.headerItem, ...isActive("About") }}>About</Text>
-      <Text style={{ ...styles.headerItem, ...isActive("Products") }}>
-        Products
-      </Text>
-      <Text style={{ ...styles.headerItem, ...isActive("Feed") }}>Feed</Text>
-    </View>
-  );
-}
+const BusinessStack = createMaterialTopTabNavigator();
 
 function BusinessNavigator({ navigation, route }) {
   const { params } = route;
   return (
     <BusinessStack.Navigator>
-      <BusinessStack.Screen
-        name='About'
-        options={{
-          headerLeft: null,
-          headerTitle: props => <BusinessHeader {...props} active={"About"} />,
-          headerStyles: {
-            margin: 0,
-            padding: 0,
-          },
-        }}
-      >
+      <BusinessStack.Screen name='About'>
         {props => <About {...props} />}
+      </BusinessStack.Screen>
+      <BusinessStack.Screen name='Products'>
+        {props => <Products {...props} />}
+      </BusinessStack.Screen>
+      <BusinessStack.Screen name='Feed'>
+        {props => <Feed {...props} />}
       </BusinessStack.Screen>
     </BusinessStack.Navigator>
   );

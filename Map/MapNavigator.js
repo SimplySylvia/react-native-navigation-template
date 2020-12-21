@@ -15,9 +15,7 @@ function MapNavigator() {
       <MapStack.Screen
         name='Business'
         component={BusinessNavigator}
-        options={{
-          headerShown: false,
-        }}
+        options={({ route }) => ({ title: route.params.id })}
       />
     </MapStack.Navigator>
   );
