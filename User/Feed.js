@@ -1,12 +1,12 @@
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-function User() {
+function Feed() {
   return (
     <View>
-      <Text>User</Text>
+      <Text>Feed</Text>
     </View>
   );
 }
 
-export default User;
+export default Feed;
